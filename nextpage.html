@@ -92,7 +92,7 @@
         });
 
         function createStars() {
-            const numStars = 300; // Adjust the number of stars
+            const numStars = 180; // Reduced number of stars for better performance
             const container = document.querySelector(".stars-container");
 
             for (let i = 0; i < numStars; i++) {
@@ -100,7 +100,7 @@
                 star.classList.add("star");
                 star.style.left = Math.random() * 100 + "vw";
                 star.style.top = Math.random() * -50 + "px"; // Start just above the screen
-                star.style.animationDuration = Math.random() * 8 + 5 + "s"; // Falling speed (5-13s)
+                star.style.animationDuration = Math.random() * 12 + 8 + "s"; // Slower fall (8-20s)
                 container.appendChild(star);
 
                 // Remove star after it falls
@@ -109,11 +109,11 @@
                 }, parseFloat(star.style.animationDuration) * 1000);
             }
 
-            // Keep generating new stars continuously
-            setInterval(createStars, 2000);
+            // Generate new stars **less often** (every 5 seconds)
+            setTimeout(() => requestAnimationFrame(createStars), 5000);
         }
 
-        createStars();
+        createStars(); // Start the animation
     </script>
 </body>
 </html>
