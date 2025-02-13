@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day! 💖</title>
+    <style>
+        /* Black Background */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Background Image */
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('valentins.png') no-repeat center center/cover;
+            z-index: 1;
+        }
+
+        /* Stars Container */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2; /* Stars will be in front of the background */
+        }
+
+        /* Stars */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: starFall linear infinite;
+        }
+
+        /* Falling Animation */
+        @keyframes starFall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Hide audio controls */
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Image -->
+    <div class="background-image"></div>
+
+    <!-- Stars Container -->
+    <div class="stars-container"></div>
+
+    <!-- Background Music -->
+    <audio id="background-music" autoplay loop>
+        <source src="valentin.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Ensure music plays on mobile (user interaction required)
+            const music = document.getElementById("background-music");
+            document.body.addEventListener("click", () => {
+                music.play();
+            }, { once: true }); // Play only once on first click
+        });
+
+        function createStars() {
+            const numStars = 300; // Adjust the number of stars
+            const container = document.querySelector(".stars-container");
+
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement("div");
+                star.classList.add("star");
+                star.style.left = Math.random() * 100 + "vw";
+                star.style.top = Math.random() * -50 + "px"; // Start just above the screen
+                star.style.animationDuration = Math.random() * 8 + 5 + "s"; // Falling speed (5-13s)
+                container.appendChild(star);
+
+                // Remove star after it falls
+                setTimeout(() => {
+                    star.remove();
+                }, parseFloat(star.style.animationDuration) * 1000);
+            }
+
+            // Keep generating new stars continuously
+            setInterval(createStars, 2000);
+        }
+
+        createStars();
+    </script>
+</body>
+</html>

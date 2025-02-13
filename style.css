@@ -1,0 +1,568 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    background-color: #ff8c8c;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.box {
+
+    position: relative;
+    width: 18em;
+    height: 18em;
+}
+
+.box-tape,
+.box-tape-left,
+.box-tape-right,
+.box-tape-center,
+.box-gifts,
+.box-gift-shadow,
+.box-gift,
+.box-star {
+    position: absolute;
+
+}
+
+.box-tape-center,
+.box-tape-left,
+.box-tape-right {
+    background-color: #cc2424;
+}
+
+
+.box-tape {
+    animation: bTape 1.5s ease-in-out infinite;
+    bottom: 11em;
+    left: 7.5em;
+    width: 3em;
+    height: 2em;
+    transform-origin: 50% 230%;
+}
+
+.box-tape-center {
+
+    border-radius: 1em;
+    width: 100%;
+    height: 100%;
+}
+
+.box-tape-left,
+.box-tape-right {
+
+    box-shadow: 0 0 0 0.7em #ee2e2e inset;
+    top: 0.3em;
+    width: 4em;
+    height: 5em;
+    z-index: -1;
+
+}
+
+.box-tape-left::before,
+.box-tape-right::before {
+    background-color: #ee2e2e;
+    border-radius: inherit;
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+
+}
+
+.box-tape-left {
+    animation: bLeft 1.5s ease-in-out infinite;
+    border-radius: 1.5em 0 3em 1em / 1.5em 0 3em 3.5em;
+    right: calc(100% - 0.75em);
+    transform: rotate(35deg);
+    transform-origin: 100% 15%;
+}
+
+.box-tape-left::before {
+    clip-path: polygon(0 42%, 100% 12%, 100% 100%, 0 100%);
+}
+
+.box-tape-right {
+    animation: bRight 1.5s ease-in-out infinite;
+    border-radius: 0 1.5em 1em 3em / 0 1.5em 3.5em 3em;
+    left: calc(100% - 0.75em);
+    transform: rotate(-35deg);
+    transform-origin: 0% 15%;
+}
+
+.box-tape-right::before {
+    clip-path: polygon(0 12%, 100% 42%, 100% 100%, 0 100%);
+}
+
+.box-gifts,
+.box-gift,
+.box-gift-shadow {
+    transform-origin: 50% 100%;
+}
+
+.box-gifts {
+    animation: box-Bounce 1.5s ease-in-out infinite;
+    background: linear-gradient(#cc2424, #cc2424) 50% 50% / 3.3em 100% no-repeat #e74460;
+    border-radius: 1.5em;
+    bottom: 0.5em;
+    left: 3.5em;
+    overflow: hidden;
+    width: 11.4em;
+    height: 9em;
+}
+
+.box-gift,
+.box-gift-shadow {
+    border-radius: 1em;
+    width: 13em;
+    height: 3.3em;
+
+}
+
+.box-gift {
+    animation: box-Bounce2 1.5s ease-in-out infinite;
+    background: linear-gradient(#ee2424, #ee2424)50% 50% / 3.3em 100% no-repeat, #e6204b;
+    bottom: 8.7em;
+    left: 2.7em;
+
+}
+
+.box-gift-shadow {
+    animation: boxShadowBounce 1.5s ease-in-out infinite;
+    background-color: #00000010;
+    top: -1.5em;
+    left: -1em;
+
+}
+
+.box-star {
+    animation: starRotate1 1.5s ease-in-out infinite;
+    background-color: #fcff50;
+    clip-path: polygon(50% 0, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0 50%, 35% 35%);
+    transform: scale(0);
+
+}
+
+.box-star-2,
+.box-star-4,
+.box-star-5 {
+    animation-name: starRotate2;
+
+}
+
+.box-star-1 {
+    animation-delay: calc(1.5s * 0.5);
+    top: 0;
+    left: 17.5em;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.box-star-2{
+    animation-delay: calc(1.5s * 0.125);
+    top: 2em;
+    left: 10em;
+    width: 1.75em;
+    height: 1.75em;
+}
+
+.box-star-3{
+    animation-delay: calc(1.5s * 0.25);
+    top: 8em;
+    left: 0;
+    width: 1.25em;
+    height: 1.25em;
+}
+.box-star-4{
+    
+    top: 10.5em;
+    left: 0;
+    width: 1.75em;
+    height: 1.75em;
+}
+
+.box-star-5{
+    animation-delay: calc(1.5s * 0.375);
+    top: 12em;
+    left: 1.8em;
+    width: 2.5em;
+    height: 2.5em;
+}
+
+@keyframes bTape {
+    from, 50% {
+        transform: translateY(0) rotate(0);
+    } 
+    62.5% {
+        transform: translateY(75%) rotate(0);
+    } 
+    68.75% {
+        transform: translateY(-37.5%) rotate(15deg);
+    } 
+    75% {
+        transform: translateY(-150%) rotate(5deg);
+    } 
+    87.5% {
+        transform: translateY(65%) rotate(-3deg);
+    } 
+    to {
+        transform: translateY(0) rotate(0);
+    } 
+    
+}
+
+
+@keyframes bLeft{
+    from, 50% {
+        transform: rotate(35deg) ;
+    } 
+    62.5% {
+        transform: rotate(45%) ;
+    }  
+    75% {
+        transform: rotate(30%)  ;
+    } 
+    87.5% {
+        transform: rotate(45%)  ;
+    } 
+    to {
+        transform: rotate(35deg)  ;
+    } 
+    
+}
+
+@keyframes bRight{
+    from, 50% {
+        transform: rotate(-35deg) ;
+    } 
+    62.5% {
+        transform: rotate(-45%) ;
+    }  
+    75% {
+        transform: rotate(-35%)  ;
+    } 
+    87.5% {
+        transform: rotate(-45%)  ;
+    } 
+    to {
+        transform: rotate(-35deg)  ;
+    } 
+    
+}
+
+@keyframes box-Bounce {
+    from, 50% {
+        transform: translateY(0)  scale(1,1);
+    } 
+    62.5% {
+        transform: translateY(4%)  scale(1.12, 0.89);
+    } 
+    75% {
+        transform: translateY(-11%)  scale(0.92, 1.1);
+    } 
+    87.5% {
+        transform: translateY(0) scale(1.05, 0.9);
+    } 
+    to {
+        transform: translateY(0)  scale(1,1);
+    } 
+    
+}
+
+@keyframes box-Bounce2 {
+    from, 50% {
+        transform: translateY(0) scale(1, 1) rotate(0);
+    } 
+    62.5% {
+        animation-timing-function: ease-in;
+        transform: translateY(45%) scale(1.14, 0.95) rotate(0);
+    } 
+    68.75% {
+        animation-timing-function: ease-out;
+        transform: translateY(-22.5%) scale(1.05, 1.03) rotate(15deg);
+    } 
+    75% {
+        animation-timing-function: ease-out;
+        transform: translateY(-90%) scale(0.96, 1.1) rotate(5deg);
+    } 
+    87.5% {
+        transform: translateY(30%) scale(1.12, 0.93) rotate(-3deg);
+    } 
+    to {
+        transform: translateY(0) scale(1,1) rotate(0);
+    } 
+    
+}
+
+@keyframes boxShadowBounce {
+    from, 50% {
+        transform: translateY(0) scale(1, 1) rotate(0);
+    } 
+    62.5% {
+        animation-timing-function: ease-in;
+        transform: translateY(10%) scale(1.14, 0.95) rotate(0);
+    } 
+    68.75% {
+        animation-timing-function: ease-out;
+        transform: translateY(-22.5%) scale(1.05, 1.03) rotate(15deg);
+    } 
+    75% {
+        animation-timing-function: ease-out;
+        transform: translateY(-90%) scale(0.96, 1.1) rotate(5deg);
+    } 
+    87.5% {
+        transform: translateY(30%) scale(1.12, 0.93) rotate(-3deg);
+    } 
+    to {
+        transform: translateY(0) scale(1,1) rotate(0);
+    } 
+    
+}
+
+@keyframes box-Bounce2 {
+    from, 50% {
+        transform: translateY(0) scale(1, 1) rotate(0);
+    } 
+    62.5% {
+        animation-timing-function: ease-in;
+        transform: translateY(45%) scale(1.14, 0.95) rotate(0);
+    } 
+    68.75% {
+        animation-timing-function: ease-out;
+        transform: translateY(-22.5%) scale(1.05, 1.03) rotate(15deg);
+    } 
+    75% {
+        animation-timing-function: ease-out;
+        transform: translateY(-90%) scale(0.96, 1.1) rotate(5deg);
+    } 
+    87.5% {
+        transform: translateY(30%) scale(1.12, 0.93) rotate(-3deg);
+    } 
+    to {
+
+        transform: translateY(0) scale(1, 1) rotate(0);
+    } 
+    
+}
+
+
+@keyframes boxShadowBounce {
+    from, 50% {
+        transform: translateY(0) scale(1, 1) rotate(0);
+    } 
+    62.5% {
+        animation-timing-function: ease-in;
+        transform: translateY(10%) scale(1.14, 0.95) rotate(0);
+    } 
+    68.75% {
+        animation-timing-function: ease-out;
+        transform: translateY(-10%) scale(1.05, 1.03) rotate(15deg);
+    } 
+    75% {
+        animation-timing-function: ease-out;
+        transform: translateY(-30%) scale(0.96, 1.1) rotate(5deg);
+    } 
+    87.5% {
+        transform: translateY(10%) scale(1.12, 0.93) rotate(-3deg);
+    } 
+    to {
+
+        transform: translateY(0) scale(1, 1) rotate(0);
+    } 
+    
+}
+
+@keyframes starRotate1 {
+    from
+    {
+transform: scale(0) rotate(0);
+
+    }
+    25% {
+        animation-timing-function: ease-out;
+        transform: scale(1) rotate(0.25turn);
+    }
+    50%,
+    to {
+
+        transform: scale(1, 1) rotate(0,5turn);
+    } 
+    
+}
+
+@keyframes starRotate2 {
+    from
+    {
+transform: scale(0) rotate(0);
+
+    }
+    25% {
+        animation-timing-function: ease-out;
+        transform: scale(1) rotate(-0.25turn);
+    }
+    50%,
+    to {
+
+        transform: scale(1, 1) rotate(-0,5turn);
+    } 
+    
+}
+
+.christmas-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 400px;
+    background: #f3cfcf;
+    border: 5px solid #f34c4c;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.christmas-card h1 {
+    color: #cc2424;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 15px;
+}
+
+.christmas-card p {
+    color: #444;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -55%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+@keyframes moveToBox {
+    from {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+    to {
+        transform: translate(-50%, -150%); /* Moves the card back */
+        opacity: 0;
+    }
+}
+
+.christmas-card.hidden {
+    animation: moveToBox 1s ease-in-out forwards; /* Increased duration to 1s */
+    pointer-events: none; /* Prevent interaction during animation */
+}
+
+/* Floating elements container */
+.snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+/* Floating hearts and sparkles */
+.floating-element {
+    position: absolute;
+    top: -10px;
+    color: #ff4d6d; /* Default color for hearts */
+    font-size: 1.5em;
+    pointer-events: none;
+    user-select: none;
+    z-index: 9999;
+    animation: float 10s linear infinite;
+}
+
+/* Randomize colors for hearts and sparkles */
+.floating-element:nth-child(odd) {
+    color: #ff4d6d; /* Pinkish-red for hearts */
+}
+
+.floating-element:nth-child(even) {
+    color: #ffd700; /* Gold for sparkles */
+}
+
+/* Floating animation */
+@keyframes float {
+    to {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+
+/* Importing Fontdiner Swanky font */
+@import url('https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&display=swap');
+
+/* Style for "Your surprise has arrived" text */
+.open-gift-text {
+    position: absolute;
+    top: 18em; /* Adjust this value to place the text under the box */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2em;
+    color: #fff;
+    font-family: 'Fontdiner Swanky', cursive;
+    font-weight: normal;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    animation: fadeIn 3s ease-out;
+}
+
+/* Fade-in animation for the text */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.countdown {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ff4d6d; /* Pinkish-red */
+    text-align: center;
+    margin-top: 10px;
+}
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: starFall linear infinite;
+}
+
+@keyframes starFall {
+    from {
+        transform: translateY(-10%);
+    }
+    to {
+        transform: translateY(110%);
+    }
+}
